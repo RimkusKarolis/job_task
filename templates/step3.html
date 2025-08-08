@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="text-xl font-bold mb-4">Step 3 of 3</h2>
+  <form method="post" id="phoneForm">
+    <label class="block mb-2">Phone number:</label>
+    <input type="text" name="phone" id="phone"
+           required
+           class="w-full p-2 border rounded mb-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+           placeholder="(123) 456-7890" />
+    <p id="phoneError" class="text-red-500 text-sm hidden">
+      Please enter a valid US phone number.
+      Example: 1234567890
+    </p>
+    <button type="submit"
+            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-3">
+      Submit
+    </button>
+  </form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.getElementById("phoneForm").addEventListener("submit", function(event) {
+    let phoneInput = document.getElementById("phone");
+    let errorMsg = document.getElementById("phoneError");
+    let pattern = /^(\+1\s?)?(\([0-9]{3}\)|[0-9]{3})[\s.-]?[0-9]{3}[\s.-]?[0-9]{4}$/;
+
+    if (!pattern.test(phoneInput.value.trim())) {
+      errorMsg.classList.remove("hidden");
+      phoneInput.classList.add("border-red-500", "ring", "ring-red-300");
+      event.preventDefault();
+    } else {
+      errorMsg.classList.add("hidden");
+      phoneInput.classList.remove("border-red-500", "ring", "ring-red-300");
+    }
+  });
+</script>
+{% endblock %}

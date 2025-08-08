@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="text-xl font-bold mb-4">Step 2 of 3</h2>
+  <form method="post">
+    <label class="block mb-2">Employment status:</label>
+    <select name="employment" required class="w-full p-2 border rounded mb-4">
+      <option value="Employed">Employed</option>
+      <option value="Self-Employed">Self-Employed</option>
+      <option value="Unemployed">Unemployed</option>
+      <option value="Student">Student</option>
+    </select>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+  </form>
+{% endblock %}

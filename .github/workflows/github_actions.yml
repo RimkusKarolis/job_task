@@ -18,9 +18,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /var/www/app
+            cd /var/app
             git pull origin main
             source venv/bin/activate
-            # Restart your app, adjust if using systemd or gunicorn
             pkill -f "python app.py" || true
             nohup python app.py &
